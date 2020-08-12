@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        html,body {
+            height: 100%;
+        }
+        /*
+        parent box의 display를 flex로 지정하는 수간
+        그 parent에 포한된 모든 box는 foex-children이 된다.
+        기
+
+        */
+        section {
+            display: flex;
+
+            /*
+            들의 값을 감ㅇ나하여 배치를 하고 
+            들의 합ㄴ이 보다 커지면
+            하라
+            */
+            flex-wrap: wrap;
+            /* flex-wrap: wrap-reverse; */
+            border: 1px solid green;
+            height: 50%;
+        }
+        div {
+            border: 1px solid blue;
+            /*
+            
+            */
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>div1</div>
+        <div>div2</div>
+        <div>div3</div>
+        <div>div4</div>
+        <div>div5</div>
+    </section>
+</body>
+</html>
