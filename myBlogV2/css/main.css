@@ -108,6 +108,18 @@ marign, padding 의 값지정
     background-image: url("images/ing001.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+
+    background-color: #2e45c7;
+
+    /*
+    10진수 타입으로 색상 표현
+    rgb 함수를 사용하여
+    */
+    background-color: rgb(46, 82, 46);
+
+    /* */
+    background-color: rgba(46, 82, 46,0.2);
+
 }
 #blog_body:hover {
     background-image: url("images/ing002.jpg");
