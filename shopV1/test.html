@@ -9,13 +9,12 @@
   <body>
     <script>
       $(function () {
-        $(".pro_item").click(function () {
-          const p_code = $(this).children().eq;
-          //alert(p_code)
-          const p_code1 = $(this).data("pcode")
-          //alert(p_code1)
-
-          document.location.href = ${rootPath}/product/deteil?
+        $("#pro_delete").click(function () {
+          if (confirm("${PRO_VO.p_name} \n상품데이터를 삭제합니다.")) {
+            document.location.replace(
+              "${rootPath}/product/delete?id=${PRO_VO.p_code}"
+            );
+          }
         });
       });
     </script>
