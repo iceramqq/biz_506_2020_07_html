@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let title1;
+        let title2 = null;
+        let title3 = "";
+        let title4 = NaN;
+        let title5 = 0;
+        let title6 = 123;
+        let msg = "대한민국";
+
+        msg =
+          title1 ||
+          title2 ||
+          title3 ||
+          title4 ||
+          title5 ||
+          title6 ||
+          "우리나라";
+
+        document.querySelector("#msg").innerHTML = msg;
+      });
+    </script>
+  </head>
+  <body>
+    <h3 id="msg">여기는 메시지가 표시될 영역</h3>
+  </body>
+</html>
