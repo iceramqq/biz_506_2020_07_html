@@ -14,24 +14,15 @@
         let title5 = 0;
         let title6 = 123;
         let msg = "대한민국";
-        if (title1 != undefined) {
-          msg = title1;
-        }
-        if (title2 != null) {
-          msg = title2;
-        }
-        if (title3 != "") {
-          msg = title3;
-        }
-        if (title4 != NaN) {
-          msg = title4;
-        }
-        if (title5 != 0) {
-          msg = title5;
-        }
-        if (title6 != 0) {
-          msg = title6;
-        }
+
+        msg =
+          title1 ||
+          title2 ||
+          title3 ||
+          title4 ||
+          title5 ||
+          title6 ||
+          "우리나라";
 
         // $("#msg")
         document.querySelector("#msg").innerHTML = msg;

@@ -6,15 +6,15 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
-        input{
+        input {
             display: block;
             width: 80%;
         }
-
     </style>
 </head>
 <body>
-    <form>
+
+    <form action="writer">
         <input type="text" placeholder="이름을 입력하세요">
         <input type="text" placeholder="id를 입력하세요(5글자 이상)">
         <input type="password" placeholder="비밀번호를 입력하세요(5글자 이상)">
@@ -27,44 +27,36 @@
     </form>
 
     <script>
-
-        function save(){
+        function save() {
             var name = document.getElementsByTagName("input")[0].value
             var userid = document.getElementsByTagName("input")[1].value
             var password = document.getElementsByTagName("input")[2].value
 
-            // 0번  input box에 값이 입력되지 않았으면
-            if(name == ""){
-                alert('이름은 반드시 입력해야 합니다')
-                // 입력 를 로 옳기고
-                document.getElementsByTagName("input")[0].focus
+            // 0번 input box에 값이 입력되지 않았으면
+            if(name == "") {
+                alert("이름은 반드시 입력해야 합니다")
+                // 입력 cursor를 box로 옮기고
+                document.getElementsByTagName("input")[0].focus()
 
-                //더이상
+                // 더이상 코드를 진행하지 말라
                 return false
             }
 
-            if(userid.length < 5){
-                alert('사용자 id는 5글자 이상입니다')
-                document.getElementsByTagName("input")[1].focus
-                return false
+            if(userid.length < 5) {
+                alert("사용자 ID는 5글자 이상입니다")
+                document.getElementsByTagName("input")[1].focus()
+                return false;
             }
-
-            if(userid.length < 5){
-                alert('비밀번호는 id는 5글자 이상입니다')
-                document.getElementsByTagName("input")[2].focus
-                return false
+            if(password.length < 5) {
+                alert("비밀번호는 5글자 이상입니다")
+                document.getElementsByTagName("input")[2].focus()
+                return false;
             }
-
-            alert('저장하러 갑니다')
-            document.getElementsByTagName('form')[0].submit
-
-
-
+            alert("저장하러 갑니다")
+            document.getElementsByTagName("form")[0].submit()
+        
         }
-
-
-
-
     </script>
+
 </body>
 </html>

@@ -7,8 +7,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <style>
         .btn {
-            /*
-            
+            /* 
+            button은 기본값이 inline tag content 크기만큼만 만들어지는 box
+            이 button을 div box의 성질로 변환시키기
             */
             display: block;
 
@@ -19,33 +20,39 @@
             background-color: cadetblue;
             color: #333;
 
-            transition: color 1s ease-in-out, width 0.5s ease-in-out, all 1s;
-        } 
-        .btn:hover {
-            color: #fff;
-        }
+            transition: color 1s ease-in-out, 
+                    width 0.5s ease-in-out, all 1s;
         
+        }
+        .btn:hover{
+            color:#fff;
+        }
+
         .hover1:hover {
             width: 500px;
         }
+
         .hover2:hover {
-            box-shadow: 300px 0 0 0 #8d143d inset;
+            box-shadow: 300px 0 0 0 #e01313 inset;
         }
         .hover3:hover {
-            box-shadow: -300px 0 0 0 #8d143d inset;
+            box-shadow: -300px 0 0 0 #e01313 inset;
         }
         .hover4:hover {
-            box-shadow: 0 80px 0 0 #8d143d inset,
-                        0 -80px 0 0 #8d143d inset;
+            box-shadow: 0 80px 0 0 #e01313 inset,
+                0 -80px 0 0 #e01313 inset;
         }
         .hover5:hover {
-            box-shadow: 200px 0 0 0 #8d143d inset,
-                        -200px 0 0 0 #8d143d inset;
+            box-shadow: 200px 0 0 0 #e01313 inset,
+                -200px 0 0 0 #e01313 inset;
         }
+
         .hover6:hover {
-           border-radius: 50%;
+            border-radius: 50%;
         }
+
     </style>
+
 </head>
 <body>
     <button class="btn hover1">버튼 1</button>
