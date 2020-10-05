@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Read Book 2020</title>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+      $(function () {
+        $("#iolist_list").click(function () {
+          document.location.href = "${rootPath}/iolist/";
+        });
+        $("#iolist_save")
+          .click(function () {
+            document.location.href = "${rootPath}/iolist/";
+          })
+          .submit();
+      });
+    </script>
   </head>
-  <style>
-    header {
-      width: 90%;
-      background-color: blue;
-    }
-  </style>
   <body>
     <header>
       <h1>loo9</h1>
