@@ -7,88 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       header {
-        text-align: center;
-        color: black;
-      }
-
-      nav {
-        display: flex;
-        padding: 5px;
-        border-bottom: inset blue;
-      }
-
-      .main-menu,
-      .sub-menu {
         margin: 0;
-        padding: 0;
-        list-style-type: none;
-      }
-
-      .main-menu > li {
-        float: left;
-        font-size: 1.1rem;
         text-align: center;
-        padding: 5px;
-        position: relative;
+        padding: 30px;
       }
 
-      .sub-menu {
-        position: absolute;
-        top: 50px;
-        visibility: hidden;
-        color: black;
-        transition: all 0.15s ease-in;
+      ul {
+        list-style-type: none;
+        text-align: center;
+        margin: 0 auto;
+        padding: 0;
+        background-color: green;
+        color: white;
       }
 
-      .main-menu > li:hover {
-        color: blue;
-      }
-
-      .main-menu > li:hover .sub-menu {
-        visibility: visible;
-      }
-
-      .sub-menu > li:hover {
-        text-decoration: underline;
+      ul li {
+        display: inline-block;
+        font-size: 20px;
+        padding: 10px;
+        font-weight: bold;
         cursor: pointer;
-        color: blue;
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>문화제 탐방</h1>
+      <h1>문화탐방</h1>
     </header>
     <nav>
-      <ul class="main-menu">
-        <li>home</li>
-        <li>
-          세대별 추천
-          <ul class="sub-menu">
-            <li>10대~20대</li>
-            <li>30대~40대</li>
-            <li>50대~</li>
-          </ul>
-        </li>
-        <li>
-          시대별 추천
-          <ul class="sub-menu">
-            <li>삼국시대</li>
-            <li>고려</li>
-            <li>조선</li>
-          </ul>
-        </li>
-        <li>
-          지역별 추천
-          <ul class="sub-menu">
-            <li>수도권</li>
-          </ul>
-        </li>
-        <li>인기별 추천</li>
-        <div>
-          <link rel="import" href="aaaa.html" />
-        </div>
+      <ul>
+        <li>생가</li>
+        <li>성지순례</li>
+        <li>유적지</li>
       </ul>
     </nav>
+    <section>
+      <div></div>
+    </section>
   </body>
 </html>
