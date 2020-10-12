@@ -1,5 +1,21 @@
-<section>
-  <div>
-    <p>sssssssssssssssssss</p>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      $(function () {
+        $.ajax({
+          url:
+            "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=tP218HXX2qhSpG8LjT2pITaRqj2y1FtF8JUHbMS405nVslpIpVCbAwVSMMANnIPwD%2BZT%2FA5DOD37COuUNueTRQ%3D%3D&contentTypeId=&areaCode=&sigunguCode=&cat1=A02&cat2=A0201&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=B&numOfRows=12&pageNo=1",
+          dataType: "xml",
+          success: function (items) {},
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="sss"></div>
+  </body>
+</html>
