@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let list = document.querySelectorAll("li");
+        list.forEach(function (li) {
+          li.addEventListener("click", function () {
+            let id = this.getAttribute("id");
+            let data_id = this.getAttribute("data-id");
+            alert(id);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li id="아이디 1" class="c1 c2 c3">대한</li>
+      <li id="아이디 1">민국</li>
+      <li id="아이디 1">우리</li>
+      <li id="아이디 4">나라</li>
+      <li id="아이디 5">만세</li>
+    </ul>
+  </body>
+</html>
