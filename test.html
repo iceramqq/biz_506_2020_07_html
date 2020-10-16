@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      $("#naver-search").click(function () {
+        let title = $("#title").val();
+        if (title === "") {
+          alert("도서명을 입력한 후 검색을 하세요");
+          $("#title").focus();
+          return false;
+        }
+        // ajax를 사용하여 서버에 네이버 검색 요청
+        // spring security 프로젝트에서 POST로 전송할 경우
+        // csrf 관련 값을 같이 보내주어야 정상적으로 서버에서
+        // 데이터를 받아 들인다
+        // jsp파일에서 spring form을 사용하면 관련된 부분을 자동으로
+        // 설정을 해주지만
+        // ajax 를 사용해서 POST로 전송할 경우는
+        // 자동으로 설정이 되지 않아서 임의로 값을 지정해 주어야 한다.
+        $.ajax({
+          // ajax로 서버의 /naver/search URL에 POST로 요청을 하면서
+          // search_text 변수에 title 변수에 담긴 값을 담아서 전달하고
+          url: `${rootPath}/naver/search`,
+          method: "POST",
+          beforeSend: function (ax) {
+            ax.setRequestHeader(`${csrf_header}`, `${csrf_token}`);
+          },
+          data: { search_text: title },
+          // 서버가 데이터 조회를 수행한 후 view(HTML코드)코드를
+          // return 하면 그 결과를
+          // #search-result div box에 채워서 보여달라
+          success: function (result) {
+            $("#search-result").html(result);
+          },
+          error: function (error) {
+            alert("서버 통신 오류!!");
+          },
+        });
+        $("#book-modal").css("display", "block");
+      });
+    </script>
+  </head>
+
+  <body></body>
+</html>
