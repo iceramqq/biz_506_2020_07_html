@@ -84,6 +84,9 @@
       button#btn-send {
         background-color: blue;
       }
+      button#btn-jq {
+        background-color: green;
+      }
       button#btn-reset {
         background-color: orange;
       }
@@ -168,16 +171,32 @@
 
           // form에 담긴 데이터를 axios(ajax방식)으로 서버로 전송하기
           // 1. js의 FormData 클래스를 객체로 생성
-          // let formData = new FormData();
+          let formData = new FormData();
+
+          // input form type = "file" 설정된 tag 를 select했는데
+          // 지금현재 form에는 id="file" 된 tag가 1개 뿐이지만
+          // type="file"로 설정된 tag는 기본값이 배열이다
+
+          //  form에서 file을 upload하는 시스템은
+          // 기본적으로 multi file을 upload 할 수 있도록 구성이 되어 있다
+          // 이런 상항에서
+          let file = $("#file");
+          formData.append("file", file[0].files[0]);
 
           // form에 입력된 input box의 모든 값을 문자열화하여
           // FormData 객체로 만들어서 formData 변수에 담아라
-          let formData = $("form#bbs-form").serialize();
+          // let formData = $("form#bbs-form").serialize();
 
+          // 파일을 axios로 전송할경우
+          // headers 속성을 추가하고,
+          // hraders 속성중에서 Content-Type : nultipart/form-data를 추가해야 한다
           axios({
             url: "http://localhost:8080/bbs/api/bbs",
             method: send_method,
             data: formData,
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
           })
             .then((res) => {
               alert("데이터 전송 성공");
@@ -190,6 +209,59 @@
         // reset 버튼 hidden input data clear 버그 수정
         $(document).on("click", "#btn-reset", () => {
           $("#b_seq").val(0);
+        });
+
+        const fileSend = (ev) => {
+          let formData = new FormData();
+          let files = ev.originalEvent.dataTransfer.files;
+          formData.append("file", files[0]);
+
+          $.ajax({
+            url: "http://localhost:8080/bbs/api/file",
+            method: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: (result) => {
+              alert("파일 업로드 성공!!\n" + result);
+              $("#image-drop h3").text("파일을 끌어 놓으세요");
+              let img = $("<img/>", {
+                src: "http://localhost:8080/bbs/upload/" + result,
+                height: "100px",
+              });
+              $("#image-view").html(img);
+            },
+            error: (err) => {
+              alert("서버 통신 오류");
+            },
+          });
+        };
+
+        // jquery의 $.ajax
+        $(document).on("click", "#btn-jq", () => {
+          fileSend();
+        }); //btn-jq end
+
+        $(document).on("dragover", "#image-drop", (e) => {
+          $("#image-drop h3").text("파일을 내려놓으세요");
+
+          // event 버블링이 일어나서 drop event가 작동이 안되는 현상을
+          // 방지하기 위한 코드
+          // e.stopPropagation();
+          // e.preventDefault();
+          // 또는
+          return false;
+        });
+
+        $(document).on("dragleave", "#image-drop", (e) => {
+          $("#image-drop h3").text("파일을 끌어 놓으세요");
+        });
+
+        $(document).on("drop", "#image-drop", (e) => {
+          // e.preventDefault();
+          $("image-drop h3").text("파일을 등록하는 중");
+          fileSend(e);
+          return false;
         });
       });
     </script>
@@ -208,7 +280,7 @@
         <tbody></tbody>
       </table>
     </section>
-    <form id="bbs-form">
+    <form id="bbs-form" enctype="multipart/form-data">
       <div>
         <label>작성일자</label><input name="b_date" id="b_date" type="text" />
       </div>
@@ -224,9 +296,35 @@
       <div>
         <label>내용</label><input name="b_content" id="b_content" type="text" />
       </div>
+      <div>
+        <label>이미지</label><input name="b_file" id="b_file" type="text" />
+      </div>
+      <style>
+        div#image-drop {
+          background-color: #aaa;
+          border: 1px solid green;
+          height: 200px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        div#image-view {
+          background-color: white;
+          border: 1px solid #ddd;
+          height: 100px;
+        }
+      </style>
+      <script>
+        $(function () {});
+      </script>
+      <div id="image-drop">
+        <h3>파일을 끌어 놓으세요</h3>
+      </div>
+      <div id="image-view"></div>
       <div id="button-box">
         <input name="b_seq" id="b_seq" value="0" type="hidden" />
-        <button type="button" id="btn-send">전송</button>
+        <button type="button" id="btn-send">axios 전송</button>
+        <button type="button" id="btn-jq">jq 전송</button>
         <button type="reset" id="btn-reset">새로작성</button>
       </div>
     </form>
