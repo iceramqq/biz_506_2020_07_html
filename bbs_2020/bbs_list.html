@@ -16,7 +16,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("table").addEventListener("click", function (event) {
       let tag_name = event.target.tagName;
-      //   alert(tag_name);
+      alert(tag_name);
       if (tag_name === "TD") {
         let text = event.target.textContent;
         alert(text);
@@ -24,47 +24,48 @@
     });
   });
 </script>
+
 <table>
   <tr>
-    <th>NO</th>
+    <th>No</th>
     <th>일자</th>
     <th>시각</th>
     <th>제목</th>
     <th>조회수</th>
   </tr>
-  <tr>
-    <th>1</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+  <tr onclick="alert('tr')">
+    <td>1</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <th>2</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td>2</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <th>3</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td>3</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <th>4</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td>4</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <th>5</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <td>5</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 </table>
